@@ -1,0 +1,43 @@
+digraph{
+    graph [dpi = 300]
+    node [shape=box]
+    rankdir =LR
+
+    {   rank=same
+        0 [group=a shape=plaintext width=0 height=0 margin = 0 label="case id 0001"]
+        01 [style = invis width=0 height=0 margin = 0]
+        0       ->  01 [style = invis, fontsize=8]
+    }
+
+    subgraph case_att{
+        case_att1 [label="case att 1" shape=folder]
+        case_att2 [label="case att 2" shape=folder]
+        case_att1       -> case_att2 [style=invis, minlen=1]
+    }
+
+    subgraph trace{
+        start   [shape = circle         label=""]
+        end     [shape = doublecircle   label=""]
+        subgraph event1 {
+            rank="same"
+            e1_act  [color = "red" label="Activity A"]
+            e1_att1 [color = "blue" label="Event att 1" style="rounded"]
+            e1_att2 [color = "blue" label="Event att 2" style="rounded"]
+            e1_act      -> e1_att1 [style=invis, constraint=fale]
+            e1_att1     -> e1_att2 [style=invis, constraint=fale]
+        }
+        subgraph event2 {
+            rank="same"
+            e2_act  [fillcolor = "#ffbb33" style = filled label="Activity C"]
+            e2_att1 [label="Event att 1" style="rounded"]
+            e2_act      -> e2_att1 [style=invis, constraint=fale]
+        }
+        // Conncet events
+        start       ->  e1_act
+        e1_act      ->  e2_act
+        e2_act      ->  end        
+    }
+
+    0           ->  case_att1   [style=invis]
+    01          ->  start       [style=invis]
+}
