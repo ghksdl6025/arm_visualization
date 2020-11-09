@@ -1,0 +1,39 @@
+digraph test_case {
+graph [compound=True, dpi=300, rankdir=TB];
+node [fontname="segoe ui", label="\N", shape=box];
+subgraph cluster_case_att {
+graph [color=hotpink, fontname="segoe ui", fontsize=18, label="Case level attributes", style=solid];
+case_att [fontsize=16, group=b, label=<<table border="0"><tr><td border="1" cellspacing="10" port="(case) includessubcases"> (case) includessubcases </td><td border="1" port="(case) includessubcases_value">J</td></tr><tr><td border="1" cellspacing="10" port="(case) responsibleactor"> (case) responsibleactor </td><td border="1" port="(case) responsibleactor_value">2670601.0</td></tr><tr><td bgcolor="deepskyblue" border="1" cellspacing="10" port="(case) caseprocedure"> (case) caseprocedure </td><td bgcolor="deepskyblue" border="1" port="(case) caseprocedure_value">None</td></tr><tr><td border="1" cellspacing="10" port="(case) casestatus"> (case) casestatus </td><td border="1" port="(case) casestatus_value">G</td></tr><tr><td border="1" cellspacing="10" port="(case) lastphase"> (case) lastphase </td><td border="1" port="(case) lastphase_value">Buiten behandeling gelaten</td></tr><tr><td border="1" cellspacing="10" port="(case) parts"> (case) parts </td><td border="1" port="(case) parts_value">Bouw</td></tr><tr><td border="1" cellspacing="10" port="(case) requestcomplete"> (case) requestcomplete </td><td border="1" port="(case) requestcomplete_value">False</td></tr><tr><td border="1" cellspacing="10" port="(case) termname"> (case) termname </td><td border="1" port="(case) termname_value">Termijn ter inzage buiten behandeling</td></tr><tr><td border="1" cellspacing="10" port="(case) SUMleges"> (case) SUMleges </td><td border="1" port="(case) SUMleges_value">Nan</td></tr></table>>, shape=none];
+}
+
+subgraph cluster_case_info {
+graph [fontname=helvetica, fontsize=25, label="Case Information", rank=same, style=dotted];
+0 [fontname="segoe ui bold", fontsize=18, group=a, height=0, label="Case ID: 6173903", margin=0, shape=plaintext, width=3];
+1 [fontname="segoe ui bold", fontsize=18, height=0, label="Actual Outcome: 1", margin=0, shape=plaintext, width=3];
+0 -> 1  [constraint=false, style=invis];
+predict [fontname="segoe ui bold", fontsize=18, height=0, label="Predicted Outcome: 1", margin=0, shape=plaintext, width=3];
+1 -> predict  [constraint=false, style=invis];
+}
+
+subgraph trace {
+start [group=a, label="", shape=circle];
+e1 [label=<<table border="0" cellpadding="2" cellspacing="0"><tr><td bgcolor="deepskyblue" border="2" cellpadding="10" colspan="2" port="Activity"> <font face="segoe ui historic" point-size="17">register submission date request</font></td></tr><tr><td border="1" port="Resource"> Resource </td><td border="1" port="Resource_value">560872</td></tr><tr><td bgcolor="deepskyblue" border="1" port="Time"> Time </td><td bgcolor="deepskyblue" border="1" port="Time_value">Short</td></tr><tr><td border="1" port="monitoringResource"> monitoringResource </td><td border="1" port="monitoringResource_value">560872</td></tr></table>>, shape=none];
+start -> e1;
+e2 [label=<<table border="0" cellpadding="2" cellspacing="0"><tr><td border="2" cellpadding="10" colspan="2" port="Activity"> <font face="segoe ui historic" point-size="17">OLO messaging active</font></td></tr><tr><td border="1" port="Resource"> Resource </td><td border="1" port="Resource_value">560872</td></tr><tr><td bgcolor="deepskyblue" border="1" port="Time"> Time </td><td bgcolor="deepskyblue" border="1" port="Time_value">Long</td></tr><tr><td border="1" port="monitoringResource"> monitoringResource </td><td border="1" port="monitoringResource_value">2670601</td></tr></table>>, shape=none];
+e1 -> e2;
+dummy [fontsize=16, group=b, style=invis];
+e3 [label=<<table border="0" cellspacing="0" cellpadding="2"><tr><td port="Activity" colspan="2" border="2" cellpadding="10"> <FONT POINT-SIZE="17" face="segoe ui historic">phase application received</FONT></td></tr><tr><td port="Resource" border="1"> Resource </td><td port="Resource_value" border="1">560872</td></tr><tr><td port="Time" border="1"> Time </td><td port="Time_value" border="1">Medium</td></tr><tr><td port="monitoringResource" border="1"> monitoringResource </td><td port="monitoringResource_value" border="1">2670601</td></tr></table>>, shape=none];
+e2 -> e3;
+e4 [label=<<table border="0" cellpadding="2" cellspacing="0"><tr><td border="2" cellpadding="10" colspan="2" port="Activity"> <font face="segoe ui historic" point-size="17">send confirmation receipt</font></td></tr><tr><td border="1" port="Resource"> Resource </td><td border="1" port="Resource_value">560872</td></tr><tr><td bgcolor="deepskyblue" border="1" port="Time"> Time </td><td bgcolor="deepskyblue" border="1" port="Time_value">Short</td></tr><tr><td border="1" port="monitoringResource"> monitoringResource </td><td border="1" port="monitoringResource_value">2670601</td></tr></table>>, shape=none];
+e3 -> e4;
+e5 [label=<<table border="0" cellpadding="2" cellspacing="0"><tr><td border="2" cellpadding="10" colspan="2" port="Activity"> <font face="segoe ui historic" point-size="17">send confirmation receipt</font></td></tr><tr><td border="1" port="Resource"> Resource </td><td border="1" port="Resource_value">560872</td></tr><tr><td bgcolor="deepskyblue" border="1" port="Time"> Time </td><td bgcolor="deepskyblue" border="1" port="Time_value">Long</td></tr><tr><td border="1" port="monitoringResource"> monitoringResource </td><td border="1" port="monitoringResource_value">2670601</td></tr></table>>, shape=none];
+e4 -> e5;
+e6 [label=<<table border="0" cellspacing="0" cellpadding="2"><tr><td port="Activity" colspan="2" border="2" cellpadding="10"> <FONT POINT-SIZE="17" face="segoe ui historic">enter senddate acknowledgement</FONT></td></tr><tr><td port="Resource" border="1"> Resource </td><td port="Resource_value" border="1">560872</td></tr><tr><td port="monitoringResource" border="1"> monitoringResource </td><td port="monitoringResource_value" border="1">2670601</td></tr></table>>, shape=none];
+e5 -> e6;
+}
+
+0 -> start  [style=invis];
+1 -> dummy  [style=invis];
+e1 -> case_att  [constraint=false, style=invis];
+dummy -> case_att  [style=invis];
+}

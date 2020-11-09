@@ -5,10 +5,16 @@ def save_graph_as_pdf(dot_string, output_file):
         g = graphviz.Source(dot_string)
     elif isinstance(dot_string, (graphviz.dot.Digraph, graphviz.dot.Graph)):
         g = dot_string
+    if '/' in output_file:
+        dir_add = output_file.split('/')[1]
+        output_file = output_file.split('/')[2]
     g.format = 'pdf'
     g.filename = output_file
-    g.directory = './img/'
-    g.render(view=False)
+    g.directory = './img/' +dir_add
+    print(output_file)
+    g.render(view=False,cleanup=True)
+    
+    g.render(view=False,cleanup=True)
 
     return g
 
@@ -17,10 +23,14 @@ def save_graph_as_png(dot_string, output_file):
         g = graphviz.Source(dot_string)
     elif isinstance(dot_string, (graphviz.dot.Digraph, graphviz.dot.Graph)):
         g = dot_string
+    if '/' in output_file:
+        dir_add = output_file.split('/')[1]
+        output_file = output_file.split('/')[2]
     g.format = 'png'
     g.filename = output_file
-    g.directory = './img/'
-    g.render(view=False)
+    g.directory = './img/' +dir_add
+    print(output_file)
+    g.render(view=False,cleanup=True)
 
     return g
 
