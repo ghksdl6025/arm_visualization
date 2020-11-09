@@ -27,7 +27,7 @@ event has 3 event level attributes, Resource, Time, and monitoringResource and v
 The last section of the image is about case level attributes, i.e., attributes regarding case information itself. Like in representing 
 event level attributes, first column describes the name of the case attribute and the other column shows according value of it.
 
-### Satisfied rules
+### Visualize satisfied rules
 
 After getting association rules for predictive monitoring and classification process, there are rules which comply with information about given case.
 Within the satisfied rules, case and event level attributes in accordance with association rules are colored in blue. Inspectors could anticipate 
