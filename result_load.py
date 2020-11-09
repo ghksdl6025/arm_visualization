@@ -16,4 +16,7 @@ for t in range(10):
     case_sfrule = {}
     for pos,rules in enumerate(list(df['Satisfying rules'])):
         case_sfrule[str(list(df['case_id'])[pos])]=literal_eval(rules)
-    load_test2.trace_coloring(dotfile,case_sfrule[caseid],outcome=predict_result[caseid])
+    if t <=5:
+        load_test2.trace_coloring(dotfile,case_sfrule[caseid],outcome=predict_result[caseid],filetype='png')
+    else:
+        load_test2.trace_coloring(dotfile,case_sfrule[caseid],outcome=predict_result[caseid],filetype='pdf')

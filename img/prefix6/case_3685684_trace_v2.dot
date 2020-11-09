@@ -1,13 +1,9 @@
 digraph test_case {
 graph [compound=True, dpi=300, rankdir=TB];
 node [fontname="segoe ui", label="\N", shape=box];
-subgraph cluster_case_info {
-graph [fontname=helvetica, fontsize=25, label="Case Information", rank=same, style=dotted];
-0 [fontname="segoe ui bold", fontsize=18, group=a, height=0, label="Case ID: 3685684", margin=0, shape=plaintext, width=3];
-1 [fontname="segoe ui bold", fontsize=18, height=0, label="Actual Outcome: 0", margin=0, shape=plaintext, width=3];
-0 -> 1  [constraint=false, style=invis];
-predict [fontname="segoe ui bold", fontsize=18, height=0, label="Predicted Outcome: 0", margin=0, shape=plaintext, width=3];
-1 -> predict  [constraint=false, style=invis];
+subgraph cluster_case_att {
+graph [color=hotpink, fontname="segoe ui", fontsize=18, label="Case level attributes", style=solid];
+case_att [fontsize=16, group=b, label=<<table border="0"><tr><td border="1" cellspacing="10" port="(case) includessubcases"> (case) includessubcases </td><td border="1" port="(case) includessubcases_value">N</td></tr><tr><td border="1" cellspacing="10" port="(case) responsibleactor"> (case) responsibleactor </td><td border="1" port="(case) responsibleactor_value">560872.0</td></tr><tr><td border="1" cellspacing="10" port="(case) caseprocedure"> (case) caseprocedure </td><td border="1" port="(case) caseprocedure_value">None</td></tr><tr><td border="1" cellspacing="10" port="(case) casestatus"> (case) casestatus </td><td border="1" port="(case) casestatus_value">G</td></tr><tr><td border="1" cellspacing="10" port="(case) lastphase"> (case) lastphase </td><td border="1" port="(case) lastphase_value">Vergunning verleend</td></tr><tr><td border="1" cellspacing="10" port="(case) parts"> (case) parts </td><td border="1" port="(case) parts_value">Kap</td></tr><tr><td bgcolor="deepskyblue" border="1" cellspacing="10" port="(case) requestcomplete"> (case) requestcomplete </td><td bgcolor="deepskyblue" border="1" port="(case) requestcomplete_value">True</td></tr><tr><td border="1" cellspacing="10" port="(case) termname"> (case) termname </td><td border="1" port="(case) termname_value">None</td></tr><tr><td border="1" cellspacing="10" port="(case) SUMleges"> (case) SUMleges </td><td border="1" port="(case) SUMleges_value">Nan</td></tr></table>>, shape=none];
 }
 
 subgraph trace {
@@ -27,13 +23,17 @@ e6 [label=<<table border="0" cellspacing="0" cellpadding="2"><tr><td port="Activ
 e5 -> e6;
 }
 
-subgraph cluster_case_att {
-graph [color=hotpink, fontname="segoe ui", fontsize=18, label="Case level attributes", style=solid];
-case_att [fontsize=16, group=b, label=<<table border="0"><tr><td border="1" cellspacing="10" port="(case) includessubcases"> (case) includessubcases </td><td border="1" port="(case) includessubcases_value">N</td></tr><tr><td border="1" cellspacing="10" port="(case) responsibleactor"> (case) responsibleactor </td><td border="1" port="(case) responsibleactor_value">560872.0</td></tr><tr><td border="1" cellspacing="10" port="(case) caseprocedure"> (case) caseprocedure </td><td border="1" port="(case) caseprocedure_value">None</td></tr><tr><td border="1" cellspacing="10" port="(case) casestatus"> (case) casestatus </td><td border="1" port="(case) casestatus_value">G</td></tr><tr><td border="1" cellspacing="10" port="(case) lastphase"> (case) lastphase </td><td border="1" port="(case) lastphase_value">Vergunning verleend</td></tr><tr><td border="1" cellspacing="10" port="(case) parts"> (case) parts </td><td border="1" port="(case) parts_value">Kap</td></tr><tr><td bgcolor="deepskyblue" border="1" cellspacing="10" port="(case) requestcomplete"> (case) requestcomplete </td><td bgcolor="deepskyblue" border="1" port="(case) requestcomplete_value">True</td></tr><tr><td border="1" cellspacing="10" port="(case) termname"> (case) termname </td><td border="1" port="(case) termname_value">None</td></tr><tr><td border="1" cellspacing="10" port="(case) SUMleges"> (case) SUMleges </td><td border="1" port="(case) SUMleges_value">Nan</td></tr></table>>, shape=none];
+subgraph cluster_case_info {
+graph [fontname=helvetica, fontsize=25, label="Case Information", rank=same, style=dotted];
+0 [fontname="segoe ui bold", fontsize=18, group=a, height=0, label="Case ID: 3685684", margin=0, shape=plaintext, width=3];
+1 [fontname="segoe ui bold", fontsize=18, height=0, label="Actual Outcome: 0", margin=0, shape=plaintext, width=3];
+0 -> 1  [constraint=false, style=invis];
+predict [fontname="segoe ui bold", fontsize=18, height=0, label="Predicted Outcome: 0", margin=0, shape=plaintext, width=3];
+1 -> predict  [constraint=false, style=invis];
 }
 
-0 -> start  [style=invis];
-1 -> dummy  [style=invis];
 e1 -> case_att  [constraint=false, style=invis];
 dummy -> case_att  [style=invis];
+0 -> start  [style=invis];
+1 -> dummy  [style=invis];
 }

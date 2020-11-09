@@ -114,12 +114,12 @@ def plot_trace(test_case,prefix):
 
     with open('./img'+output_file+'.dot','w') as f:
         f.write(trace)
-    draw_graph.save_graph_as_png(trace,output_file)
+    # draw_graph.save_graph_as_png(trace,output_file)
 
     # #Plot case attributes
 
 
-def trace_coloring(dotfile,attributes,outcome):
+def trace_coloring(dotfile,attributes,outcome,filetype='png'):
     with open(dotfile,'r') as f:
         graph = pydot.graph_from_dot_data(f.read())[0]
 
@@ -184,4 +184,7 @@ def trace_coloring(dotfile,attributes,outcome):
         f.write(graph)
     dotfile = dotfile[:-4]
     dotfile = '/'+dotfile.split('/')[2]+'/'+dotfile.split('/')[3]
-    draw_graph.save_graph_as_pdf(graph,dotfile)
+    if filetype =='png':
+        draw_graph.save_graph_as_png(graph,dotfile)
+    elif filetype=='pdf':
+        draw_graph.save_graph_as_pdf(graph,dotfile)
